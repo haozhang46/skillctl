@@ -1,6 +1,9 @@
 # Binaries
 /skillctl
 /dist/
+npm/**/bin/skillctl
+npm/**/bin/skillctl.exe
+npm/**/*.tgz
 
 # Editor / OS
 .DS_Store

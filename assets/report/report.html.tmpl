@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{.SkillName}} — skillctl eval report</title>
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: ui-sans-serif, system-ui, sans-serif; margin: 0; background: #f6f5f1; color: #1b1b19; }
+    header { padding: 24px 32px; background: #1b1b19; color: #f6f5f1; }
+    h1 { margin: 0 0 8px; font-size: 1.4rem; }
+    nav { display: flex; gap: 12px; padding: 16px 32px; }
+    nav a { color: #1b1b19; }
+    section { padding: 0 32px 32px; }
+    .card { background: #fff; border: 1px solid #e4e2d8; border-radius: 8px; padding: 16px; margin: 12px 0; }
+    table { border-collapse: collapse; width: 100%; background: #fff; }
+    th, td { border: 1px solid #e4e2d8; padding: 8px 10px; text-align: left; }
+    th { background: #1b1b19; color: #f6f5f1; }
+    .pass { color: #3d6b2f; }
+    .fail { color: #b42318; }
+    pre { white-space: pre-wrap; background: #faf9f5; padding: 12px; overflow: auto; }
+    .muted { color: #6b6a64; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>{{.SkillName}}</h1>
+    <p>iteration {{.Iteration}} · skillctl report</p>
+  </header>
+  <nav>
+    <a href="#outputs">Outputs</a>
+    <a href="#benchmark">Benchmark</a>
+  </nav>
+  <section id="outputs">
+    <h2>Outputs</h2>
+    {{range .Evals}}
+    <div class="card">
+      <h3>eval-{{.ID}} {{.Name}}</h3>
+      {{range .Configs}}
+      <h4>{{.Name}}</h4>
+      {{if .Partial}}<p class="muted">No grading.json</p>{{end}}
+      <p class="muted">Output files: {{if .Files}}{{range $i, $f := .Files}}{{if $i}}, {{end}}{{$f}}{{end}}{{else}}(none){{end}}</p>
+      {{if .Transcript}}<pre>{{.Transcript}}</pre>{{else}}<p class="muted">No transcript.md</p>{{end}}
+      {{if .Expectations}}
+      <ul>
+        {{range .Expectations}}
+        <li class="{{if .Passed}}pass{{else}}fail{{end}}">{{if .Passed}}pass{{else}}fail{{end}} — {{.Text}} — {{.Evidence}}</li>
+        {{end}}
+      </ul>
+      {{end}}
+      {{end}}
+    </div>
+    {{end}}
+  </section>
+  <section id="benchmark">
+    <h2>Benchmark</h2>
+    {{if .HasBenchmark}}
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>With skill</th><th>Without skill</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pass rate</td>
+          <td>{{printf "%.0f%%" .WithPct}}</td>
+          <td>{{printf "%.0f%%" .WithoutPct}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table style="margin-top:16px">
+      <thead>
+        <tr><th>Eval</th><th>With skill</th><th>Without skill</th></tr>
+      </thead>
+      <tbody>
+        {{range .Evals}}
+        <tr>
+          <td>eval-{{.ID}} {{.Name}}</td>
+          <td>{{.WithLabel}}</td>
+          <td>{{.WithoutLabel}}</td>
+        </tr>
+        {{end}}
+      </tbody>
+    </table>
+    {{if .Gaps}}
+    <p>Gaps:</p>
+    <ul>{{range .Gaps}}<li>{{.}}</li>{{end}}</ul>
+    {{end}}
+    {{else}}
+    <p class="muted">No benchmark.json yet. Run <code>skillctl eval aggregate</code>.</p>
+    {{end}}
+  </section>
+</body>
+</html>

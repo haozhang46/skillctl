@@ -1,0 +1,17 @@
+{
+  "name": "@hz/skillctl-linux-arm64",
+  "version": "0.1.0",
+  "description": "skillctl binary for linux arm64",
+  "license": "MIT",
+  "os": ["linux"],
+  "cpu": ["arm64"],
+  "files": ["bin/skillctl"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hz/skillctl.git",
+    "directory": "npm/skillctl-linux-arm64"
+  }
+}

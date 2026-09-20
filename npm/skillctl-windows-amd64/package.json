@@ -1,0 +1,17 @@
+{
+  "name": "@hz/skillctl-windows-amd64",
+  "version": "0.1.0",
+  "description": "skillctl binary for windows amd64",
+  "license": "MIT",
+  "os": ["win32"],
+  "cpu": ["x64"],
+  "files": ["bin/skillctl.exe"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hz/skillctl.git",
+    "directory": "npm/skillctl-windows-amd64"
+  }
+}

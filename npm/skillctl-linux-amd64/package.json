@@ -1,0 +1,17 @@
+{
+  "name": "@hz/skillctl-linux-amd64",
+  "version": "0.1.0",
+  "description": "skillctl binary for linux amd64",
+  "license": "MIT",
+  "os": ["linux"],
+  "cpu": ["x64"],
+  "files": ["bin/skillctl"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hz/skillctl.git",
+    "directory": "npm/skillctl-linux-amd64"
+  }
+}

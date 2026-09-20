@@ -1,0 +1,17 @@
+{
+  "name": "@hz/skillctl-darwin-arm64",
+  "version": "0.1.0",
+  "description": "skillctl binary for darwin arm64",
+  "license": "MIT",
+  "os": ["darwin"],
+  "cpu": ["arm64"],
+  "files": ["bin/skillctl"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hz/skillctl.git",
+    "directory": "npm/skillctl-darwin-arm64"
+  }
+}

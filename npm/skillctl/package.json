@@ -1,0 +1,34 @@
+{
+  "name": "@hz/skillctl",
+  "version": "0.1.0",
+  "description": "Create, validate, package, and evaluate Agent Skills for Cursor and VS Code Copilot",
+  "license": "MIT",
+  "bin": {
+    "skillctl": "bin/skillctl.js"
+  },
+  "files": [
+    "bin",
+    "lib/platform.js"
+  ],
+  "scripts": {
+    "test": "node --test lib/platform.test.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hz/skillctl.git",
+    "directory": "npm/skillctl"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "optionalDependencies": {
+    "@hz/skillctl-darwin-arm64": "0.1.0",
+    "@hz/skillctl-darwin-amd64": "0.1.0",
+    "@hz/skillctl-linux-amd64": "0.1.0",
+    "@hz/skillctl-linux-arm64": "0.1.0",
+    "@hz/skillctl-windows-amd64": "0.1.0"
+  }
+}
