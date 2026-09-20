@@ -1,0 +1,12 @@
+# Binaries
+/skillctl
+/dist/
+
+# Editor / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Bench outputs (local experiments)
+.skillbench/
